@@ -160,12 +160,30 @@
     </div>
   </div>
 
-  <div id="appContainer">
+<div id="appContainer">
+  
+  <!-- TOP BUTTON BAR -->
   <div style="padding:10px; background:#003c8f; text-align:center;">
     <button onclick="loadPage(9)" style="margin:5px; padding:10px;">Class 9 SST</button>
     <button onclick="loadPage(10)" style="margin:5px; padding:10px;">Class 10 SST</button>
   </div>
-  <iframe id="viewer"></iframe>
+
+  <!-- MESSAGE (DEFAULT VIEW) -->
+  <div id="defaultMessage" style="
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:90%;
+    font-size:20px;
+    color:#003c8f;
+    font-weight:bold;
+  ">
+    📘 Please choose your class to continue
+  </div>
+
+  <!-- IFRAME -->
+  <iframe id="viewer" style="display:none;"></iframe>
+
 </div>
 
   <script>
@@ -219,7 +237,7 @@ async function login() {
 
       document.getElementById("loginContainer").style.display = "none";
       document.getElementById("appContainer").style.display = "block";
-      loadPage(10); // default open class 9 (you can change to 10)
+      
 
     } else {
       errorBox.innerHTML = `
@@ -272,7 +290,7 @@ window.onload = async function() {
   if (data.valid) {
     document.getElementById("loginContainer").style.display = "none";
     document.getElementById("appContainer").style.display = "block";
-    loadPage(10);
+    
   } else {
     localStorage.clear();
   }
@@ -284,6 +302,9 @@ window.onload = async function() {
 
 
 function loadPage(cls) {
+  document.getElementById("defaultMessage").style.display = "none";
+  document.getElementById("viewer").style.display = "block";
+
   if (cls === 9) {
     document.getElementById("viewer").src = LINK_CLASS_9;
   } else {
