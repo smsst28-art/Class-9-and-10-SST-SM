@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Study Materials CLSS 9 MATH</title>
+  <title>Study Materials Class 9 Class 10 Social Science</title>
 
   <style>
     body {
@@ -128,7 +128,7 @@
 
       <img src="https://i.ibb.co/WNZTWPwv/LOGO-PNG-2025-fab.png" alt="Logo">
 
-      <h2>Login to Study Materials<br>CLASS 9 MATH</h2>
+      <h2>Login to Study Materials<br>Class 9 and Class 10 Solical science </h2>
 
       <input type="email" id="emailInput" placeholder="Enter your email" required />
 	  
@@ -161,14 +161,19 @@
   </div>
 
   <div id="appContainer">
-    <iframe id="viewer"></iframe>
+  <div style="padding:10px; background:#003c8f; text-align:center;">
+    <button onclick="loadPage(9)" style="margin:5px; padding:10px;">Class 9 SST</button>
+    <button onclick="loadPage(10)" style="margin:5px; padding:10px;">Class 10 SST</button>
   </div>
+  <iframe id="viewer"></iframe>
+</div>
 
   <script>
-  const BACKEND_URL = "https://s-m-11-chemsitry.onrender.com";
+  const BACKEND_URL = "https://class-9-and-10-sst-sm.onrender.com";
 
-const SINGLE_LINK =
-"https://smcl10science-hash.github.io/SM-Cl-10-Science-data/html/SM 10 science.html";
+
+const LINK_CLASS_9 = "https://smcl10science-hash.github.io/SM-Cl-10-Science-data/html/SM 9 Social science.html";
+const LINK_CLASS_10 = "https://smcl10science-hash.github.io/SM-Cl-10-Science-data/html/SM 10 Social science.html";
 
 
 
@@ -214,7 +219,7 @@ async function login() {
 
       document.getElementById("loginContainer").style.display = "none";
       document.getElementById("appContainer").style.display = "block";
-      document.getElementById("viewer").src = SINGLE_LINK;
+      loadPage(10); // default open class 9 (you can change to 10)
 
     } else {
       errorBox.innerHTML = `
@@ -267,7 +272,7 @@ window.onload = async function() {
   if (data.valid) {
     document.getElementById("loginContainer").style.display = "none";
     document.getElementById("appContainer").style.display = "block";
-    document.getElementById("viewer").src = SINGLE_LINK;
+    loadPage(10);
   } else {
     localStorage.clear();
   }
@@ -275,6 +280,16 @@ window.onload = async function() {
 
 
 
+
+
+
+function loadPage(cls) {
+  if (cls === 9) {
+    document.getElementById("viewer").src = LINK_CLASS_9;
+  } else {
+    document.getElementById("viewer").src = LINK_CLASS_10;
+  }
+}
 
 
 
